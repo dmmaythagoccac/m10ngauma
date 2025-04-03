@@ -323,49 +323,49 @@ local v15 = v14:CreateWindow({
 });
 local v16 = {
     Home = v15:AddTab({
-        Title = "Thông Tin"
+        Title = " tab Thông Tin"
     }),
     Main = v15:AddTab({
-        Title = "Cày"
+        Title = " tab Cày"
     }),
     Sea = v15:AddTab({
-        Title = "Sự Kiện"
+        Title = "tab Sự Kiện"
     }),
     ITM = v15:AddTab({
-        Title = "Vật Phẩm"
+        Title = "tab Vật Phẩm"
     }),
     Setting = v15:AddTab({
-        Title = "Cài Đặt"
+        Title = "tab Cài Đặt"
     }),
     Status = v15:AddTab({
-        Title = "Máy Chủ"
+        Title = "tab Máy Chủ"
     }),
     Stats = v15:AddTab({
-        Title = "Chỉ Số"
+        Title = "tab Chỉ Số"
     }),
     Player = v15:AddTab({
-        Title = "Người Chơi"
+        Title = " tab Người Chơi"
     }),
     Teleport = v15:AddTab({
-        Title = "Dịch Chuyển"
+        Title = "tab Dịch Chuyển"
     }),
     Visual = v15:AddTab({
-        Title = "Giả"
+        Title = "tab Giả thị giác"
     }),
     Fruit = v15:AddTab({
-        Title = "Trái"
+        Title = " tab Trái"
     }),
     Raid = v15:AddTab({
-        Title = "Tập Kích"
+        Title = "tab Tập Kích"
     }),
     Race = v15:AddTab({
-        Title = "Tộc"
+        Title = "tab Tộc"
     }),
     Shop = v15:AddTab({
-        Title = "Cửa Hàng"
+        Title = "tab Cửa Hàng"
     }),
     Misc = v15:AddTab({
-        Title = "Khác"
+        Title = "tab Khác"
     })
 };
 local v17 = v14.Options;
@@ -9325,6 +9325,6 @@ spawn(function()
 end);
 v14:Notify({
     Title = "karse",
-    Content = "Tải Xong",
+    Content = "By karse",
     Duration = 10
 });
