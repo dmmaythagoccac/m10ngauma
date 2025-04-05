@@ -1400,15 +1400,15 @@ _G.Fast_Delay = true
 print("--[[Loaded UI]]--")
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/r2lx-hub/Fluxus-R2LX/refs/heads/main/fluent-mod-wibu-final%20.lua"))()
 Window = Fluent:CreateWindow({
-    Title = "R2lx Hub-Blox Fruit",
-    SubTitle = "by Enc",
+    Title = "Karse Hub-Blox Fruit",
+    SubTitle = "by karse",
     TabWidth = 155,
     Size = UDim2.fromOffset(555, 320),
     Acrylic = false, 
     Theme = "R2LX",
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
-Shop = Window:AddTab({ Title = "Tab Shop", Icon = "" })
+Shop = Window:AddTab({ Title = "Tab Cửa Hàng", Icon = "" })
 sex = {
     "WildDares",
     "BossBuild",
@@ -1433,7 +1433,7 @@ sex = {
     "EARN_FRUITS",
 }
 Shop:AddButton({
-    Title = "Redeem Code",
+    Title = "lấy tất cả x2 code",
     Callback = function()
         function RedeemCode(Value)
             game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Value)
@@ -1450,7 +1450,7 @@ Shop:AddButton({
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local CommF_Remote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Teleport Old World",
+    Title = "Teleport sea 1",
     Callback = function()
         local success, result = pcall(function()
             return CommF_Remote:InvokeServer("TravelMain")
@@ -1463,7 +1463,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Teleport New World",
+    Title = "Teleport sea 2",
     Callback = function()
         local success, result = pcall(function()
             return CommF_Remote:InvokeServer("TravelDressrosa")
@@ -1476,7 +1476,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Teleport Third Sea",
+    Title = "Teleport sea 3",
     Callback = function()
         local success, result = pcall(function()
             return CommF_Remote:InvokeServer("TravelZou")
@@ -1486,14 +1486,14 @@ Shop:AddButton({
     end
 })
 Shop:AddParagraph({
-    Title = "Fighting Shop",
+    Title = "Cửa Hàng Melee",
     Content = string.rep("-", 21)
 })
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Black Leg",
+    Title = "Chân Đen",
     Callback = function()
         local success, result = pcall(function()
             return CommF_Remote:InvokeServer("BuyBlackLeg")
@@ -1506,7 +1506,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Fishman Karate",
+    Title = "Võ Cá v1",
     Callback = function()
         local success, result = pcall(function()
             return CommF_Remote:InvokeServer("BuyFishmanKarate")
@@ -1519,7 +1519,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Electro",
+    Title = "Võ Điện v1",
     Callback = function()
         local success, result = pcall(function()
             return CommF_Remote:InvokeServer("BuyElectro")
@@ -1532,7 +1532,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 Shop:AddButton({
-    Title = "Dragon Breath",
+    Title = "Võ Rồng v1",
     Callback = function()
         local success1, result1 = pcall(function()
             return CommF_Remote:InvokeServer("BlackbeardReward", "DragonClaw", "1")
@@ -1557,7 +1557,7 @@ Shop:AddButton({
     end
 })
 Shop:AddButton({
-    Title = "Death Step",
+    Title = "chân lửa v2",
     Callback = function()
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
         local CommF_ = ReplicatedStorage.Remotes.CommF_
@@ -1565,7 +1565,7 @@ Shop:AddButton({
     end
 })
 Shop:AddButton({
-    Title = "Sharkman Karate",
+    Title = "Võ Cá v2",
     Callback = function()
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
         local CommF_ = ReplicatedStorage.Remotes.CommF_
@@ -1575,7 +1575,7 @@ Shop:AddButton({
     end
 })
 Shop:AddButton({
-    Title = "Electric Claw",
+    Title = "Võ Điện v2",
     Callback = function()
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
         local CommF_ = ReplicatedStorage.Remotes.CommF_
@@ -1583,7 +1583,7 @@ Shop:AddButton({
     end
 })
 Shop:AddButton({
-    Title = "Dragon Talon",
+    Title = "Võ Rồng v2",
     Callback = function()
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
         local CommF_ = ReplicatedStorage.Remotes.CommF_
@@ -1599,7 +1599,7 @@ Shop:AddButton({
     end
 })
 Shop:AddButton({
-    Title = "Sanguine Art",
+    Title = "Võ Máu",
     Callback = function()
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
         local CommF_ = ReplicatedStorage.Remotes.CommF_
@@ -1613,19 +1613,19 @@ Shop:AddParagraph({
     Content = string.rep("-", 21)
 })
 Shop:AddButton({
-	Title = "Skyjump [ $10,000 Beli ]",
+	Title = "nhảy liên tục [ $10,000 Beli ]",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
 	end
 })
 Shop:AddButton({
-	Title = "Buso Haki [ $25,000 Beli ]",
+	Title = "haki Vũ Trang [ $25,000 Beli ]",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
 	end
 })
 Shop:AddButton({
-	Title = "Observation haki [ $750,000 Beli ]",
+	Title = "Haki Quan Sát [ $750,000 Beli ]",
 	Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
 	end
@@ -1641,14 +1641,14 @@ Shop:AddParagraph({
     Content = string.rep("-", 21)
 })
 Shop:AddButton({
-     Title = "Buy Refund Stat (2500F)",
+     Title = "Mua Reset chỉ số (2500F)",
      Callback = function()            
          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
      end
 })
 Shop:AddButton({
-     Title = "Buy Reroll Race (3000F)",
+     Title = "Mua Tộc (3000F)",
      Callback = function()            
          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
 	     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
@@ -1676,7 +1676,7 @@ Shop:AddButton({
         end
     end
 })
-Server = Window:AddTab({ Title = "Tab Status And Server", Icon = "" })
+Server = Window:AddTab({ Title = "Tab Status Và Máy Chủ", Icon = "" })
 Time = Server:AddParagraph({
     Title = "Time Zone",
     Content = ""
@@ -2024,7 +2024,7 @@ function Hop()
     end
     Teleport()
 end
-LGa = Window:AddTab({ Title = "Tab Local Player", Icon = "" })
+LGa = Window:AddTab({ Title = "Tab Người Chơi", Icon = "" })
 LGa:AddButton({
     Title = "Stop Tween",
     Callback = function()
@@ -2033,19 +2033,19 @@ LGa:AddButton({
 })
 LGa:AddButton({
 	Title = "Show Item",
-	Description = "I'm Still Fixing....",
+	Description = "đang fix....",
 	Callback = function()	
 	end
 })
 LGa:AddButton({
     Title = "Open Devil Fruit Shop [ Mirage ]",
-    Description = "I'm Still Fixing....",
+    Description = "xin lỗi đang fix....",
     Callback = function()     
     end
 })
 LGa:AddButton({
     Title = "Open Devil Fruit Shop",
-    Description = "I'm Still Fixing....",
+    Description = "đang fix....",
     Callback = function()            
     end
 })
@@ -2485,7 +2485,7 @@ Toggle:OnChanged(function(Value)
         until not getgenv().TeleportIsland
     end
 end)
-Settings = Window:AddTab({ Title = "Setting Farm", Icon = "" })
+Settings = Window:AddTab({ Title = "cài đặt farm", Icon = "" })
 Dropdown = Settings:AddDropdown("DropdownFarm", {
     Title = "Select Weapon",
     Values = {"Melee","Sword","Blox Fruit"},
@@ -2793,7 +2793,7 @@ spawn(function()
         end)
     end
 end)
-Main = Window:AddTab({ Title = "Tab Farming", Icon = "" })
+Main = Window:AddTab({ Title = "Tab cày", Icon = "" })
 Main:AddButton({
     Title = "Copy discord invite link",
     Callback = function()
@@ -4370,7 +4370,7 @@ spawn(function()
         end
     end
 end)
-Other = Window:AddTab({ Title = "Tab Farming Other", Icon = "" })
+Other = Window:AddTab({ Title = "Tab Cày Khác", Icon = "" })
 Other:AddParagraph({
         Title = "Quest Dragon",
         Content = ""
@@ -4819,7 +4819,7 @@ elseif World3 then
     }
 end
 Dropdown = Other:AddDropdown("Dropdown", {
-    Title = "Select Boss",
+    Title = "Chọn Boss",
     Values = tableBoss,
     Multi = false,
 })
@@ -4955,7 +4955,7 @@ spawn(function()
         end
     end
 end)
-Blog = Window:AddTab({ Title = "Tab Fruit And Raid", Icon = "" })
+Blog = Window:AddTab({ Title = "Tab Fruit And Tập Kích", Icon = "" })
 Toggle = Blog:AddToggle("Toggle", {Title = "Random Devil Fruit", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().RandomFruit = Value
@@ -5259,7 +5259,7 @@ Blog:AddButton({
     end
 })
 end
-Sea = Window:AddTab({ Title = "Tab Sea Event", Icon = "" })
+Sea = Window:AddTab({ Title = "Tab Sự Kiện Biển", Icon = "" })
 SetSpeedBoatSlider = Sea:AddSlider("SliderSpeedBoat", {
 	Title = "Ship Speed",
 	Default = 300,
@@ -6160,7 +6160,7 @@ task.spawn(function()
         end
     end
 end)
-ChooseSkill = Window:AddTab({ Title = "Tab Setting Select Skill", Icon = "" })
+ChooseSkill = Window:AddTab({ Title = "Tab Cài Đặt Chọn Skill", Icon = "" })
 ChooseSkill:AddParagraph({
     Title = "Setting Sea Event",
     Content = string.rep("-", 21)
@@ -6345,7 +6345,7 @@ task.spawn(function()
         end)
     end
 end)
-Volcanic = Window:AddTab({ Title = "Tab Volcanic Event", Icon = "" })
+Volcanic = Window:AddTab({ Title = "Tab Sự Kiện Biển", Icon = "" })
 Volcanic:AddButton({
 	Title = "Destroy Lava In Prehistoric Island",
 	Callback = function()
@@ -6595,7 +6595,7 @@ Toggle = Volcanic:AddToggle("Toggle", {
 Toggle:OnChanged(function(v404)
     getgenv().UseGun = v404
 end)
-Race = Window:AddTab({ Title = "Tab Upgrade Race", Icon = "" })
+Race = Window:AddTab({ Title = "Tab Nâng Cấp Tộc", Icon = "" })
 Race:AddParagraph({
     Title = "Race Draco",
     Content = string.rep("-", 21)
@@ -6683,7 +6683,7 @@ spawn(function()
         end
     end)
 end)
-Toggle = Race:AddToggle("Toggle", {Title = "Auto Get Cyborg", Description = "Buy Chip And Kill Order", Default = false })
+Toggle = Race:AddToggle("Toggle", {Title = "Auto lấy tộc máy", Description = "Buy Chip And Kill Order", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().AutoCyborg = Value
 end)
@@ -6739,7 +6739,7 @@ spawn(function()
         end
     end)
 end)
-Toggle = Race:AddToggle("Toggle", {Title = "Auto Get Ghoul", Default = false })
+Toggle = Race:AddToggle("Toggle", {Title = "Auto lấy Tộc Quỷ", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().AutoGhoul = Value
 end)
@@ -6798,7 +6798,7 @@ spawn(function()
         end
     end
 end)
-Toggle = Race:AddToggle("Toggle", {Title = "Teleport Ancient Clock", Default = false })
+Toggle = Race:AddToggle("Toggle", {Title = "Dịch Chuyển Đến Ancient Clock", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().TeleportAcientClock = Value
     StopTween(getgenv().TeleportAcientClock)
@@ -6943,7 +6943,7 @@ spawn(function()
         end
     end
 end)
-Toggle = Race:AddToggle("Toggle", { Title = "Teleport To Migare Island", Default = false })
+Toggle = Race:AddToggle("Toggle", { Title = "Dịch chuyển Đến đảo bí ẩn", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().TeleportMigare = Value
     StopTween(getgenv().TeleportMigare)
@@ -6984,7 +6984,7 @@ Toggle:OnChanged(function(Value)
         end
     end)
 end)
-Toggle = Race:AddToggle("Toggle", { Title = "Teleport To Advanced Fruit Dealer", Default = false })
+Toggle = Race:AddToggle("Toggle", { Title = "dịch chuyển đến Advanced Fruit Dealer", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().TeleportAdvancedFruitDealer = Value
     if not Value then
@@ -7043,7 +7043,7 @@ Toggle:OnChanged(function(Value)
         end
     end)
 end)
-Toggle = Race:AddToggle("Toggle", { Title = "Teleport To Blue Gear", Default = false })
+Toggle = Race:AddToggle("Toggle", { Title = "dịch chuyển đến gear xanh", Default = false })
 Toggle:OnChanged(function(Value)
     getgenv().TeleportToGear = Value
     StopTween(getgenv().TeleportToGear)
@@ -7062,7 +7062,7 @@ spawn(function()
     end
 end)
 Race:AddButton({
-    Title = "Teleport To Trial Door",
+    Title = "dịch chuyển đến cửa trial",
     Callback = function()
         local player = game:GetService("Players").LocalPlayer
         if not player or not player:FindFirstChild("Data") or not player.Data:FindFirstChild("Race") then
@@ -7209,7 +7209,7 @@ spawn(function()
         end
     end
 end)
-Get = Window:AddTab({ Title = "Tab Get Items And Buy", Icon = "" })
+Get = Window:AddTab({ Title = "Tab Lấy Đồ và Mua", Icon = "" })
 Toggle = Get:AddToggle("Toggle", {Title = "Auto Trade Bone", Default = false})
 Toggle:OnChanged(function(Value)
     getgenv().AutoTradeBone = Value
@@ -7905,7 +7905,7 @@ Toggle:OnChanged(function(Value)
         end
     end
 end)
-PVP = Window:AddTab({ Title = "Tab PVP", Icon = "" })
+PVP = Window:AddTab({ Title = "Tab oánh nhau", Icon = "" })
 local Playerslist = {}
 for i, player in ipairs(game.Players:GetPlayers()) do
     Playerslist[i] = player.Name
