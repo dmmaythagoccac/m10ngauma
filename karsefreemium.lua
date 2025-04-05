@@ -2414,35 +2414,35 @@ local Window = Fluent:CreateWindow({
 })
 local Tabs = {
 	Main = Window:AddTab({
-		Title = "General",
+		Title = "cày cấp",
 		Icon = ""
 	}),
 	SUB = Window:AddTab({
-		Title = "Sub Farm",
+		Title = "tìm hop",
 		Icon = ""
 	}),
 	Q = Window:AddTab({
-		Title = "Quest",
+		Title = "nhiệm vụ vật phẩm",
 		Icon = ""
 	}),
 	I = Window:AddTab({
-		Title = "Items",
+		Title = "đồ",
 		Icon = ""
 	}),
 	Ea = Window:AddTab({
-		Title = "Upgrade Race",
+		Title = "update tộc",
 		Icon = ""
 	}),
 	SE = Window:AddTab({
-		Title = "Sea Events",
+		Title = "sự kiện",
 		Icon = ""
 	}),
 	D = Window:AddTab({
-		Title = "Dojo",
+		Title = " làm Dojo",
 		Icon = ""
 	}),
 	V = Window:AddTab({
-		Title = "Volcanic",
+		Title = "đảo lửa",
 		Icon = ""
 	}),
 	SS = Window:AddTab({
@@ -2458,19 +2458,19 @@ local Tabs = {
 		Icon = ""
 	}),
 	Fruit = Window:AddTab({
-		Title = "Fruit | Raid",
+		Title = "trái | Raid",
 		Icon = ""
 	}),
 	TP = Window:AddTab({
-		Title = "Teleport",
+		Title = "dịch chuyển",
 		Icon = ""
 	}),
 	Shop = Window:AddTab({
-		Title = "Shop",
+		Title = "cửa hàng",
 		Icon = ""
 	}),
 	Sg = Window:AddTab({
-		Title = "Settings",
+		Title = "cài đặt",
 		Icon = ""
 	}),
 }
@@ -2480,7 +2480,7 @@ end
 PosY = 50
 local Main = Tabs.Main:AddSection("General Farm")
 local Toggle = Tabs.Main:AddToggle("Farm Level", {
-	Title = "Farm Level",
+	Title = "cày cấp",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -2552,7 +2552,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Main:AddToggle("Farm Nearest", {
-	Title = "Farm Nearest",
+	Title = "đánh quái vật gần",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -2591,7 +2591,7 @@ spawn(function()
 end)
 local Mastery = Tabs.Main:AddSection("Katakuri")
 local Toggle = Tabs.Main:AddToggle("Farm Katakuri", {
-	Title = "Farm Katakuri",
+	Title = "đánh katakuri",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -2738,7 +2738,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Main:AddToggle("Summon Katakuri", {
-	Title = "Summon Katakuri",
+	Title = "triệu hồi katakuri",
 	Description = "Auto summon Cake Prince",
 	Default = true,
 	Callback = function(Value)
@@ -2747,7 +2747,7 @@ local Toggle = Tabs.Main:AddToggle("Summon Katakuri", {
 })
 local Bones = Tabs.Main:AddSection("Bones")
 local Toggle = Tabs.Main:AddToggle("Farm Bones ", {
-	Title = "Farm Bones",
+	Title = "cày bone",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -2809,7 +2809,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Main:AddToggle("Random Bone", {
-	Title = "Random Bones",
+	Title = "random xương",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -2827,7 +2827,7 @@ spawn(function()
 end)
 local Mastery = Tabs.Main:AddSection("Mastery Farm")
 local DropdownMastery = Tabs.Main:AddDropdown("DropdownMastery", {
-	Title = "Mastery Mode",
+	Title = "thông thạo mode",
 	Values = {
 		"Level",
 		"Near Mobs",
@@ -2840,7 +2840,7 @@ DropdownMastery:OnChanged(function(Value)
 	TypeMastery = Value
 end)
 local Toggle = Tabs.Main:AddToggle("Auto Farm Mastery", {
-	Title = "Auto Farm Mastery",
+	Title = "auto cày thông thạo",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3050,7 +3050,7 @@ end
 
 
 local DropdownBoss = Tabs.Main:AddDropdown("Select Boss", {
-	Title = "Select Boss",
+	Title = "chọn boss",
 	Values = tableBoss,
 	Multi = false,
 	Default = 1,
@@ -3061,7 +3061,7 @@ DropdownBoss:OnChanged(function(Value)
 	_G.SelectBoss = Value
 end)
 local Toggle = Tabs.Main:AddToggle("Farm Selected Boss", {
-	Title = "Farm Selected Boss",
+	Title = "Farm Boss đã chọn",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3165,7 +3165,7 @@ elseif Third_Sea then
 	}
 end
 local DropdownMaterial = Tabs.Main:AddDropdown("Select Material", {
-	Title = "Select Material",
+	Title = "chịn nguyên liệu",
 	Values = MaterialList,
 	Multi = false,
 	Default = 1,
@@ -3175,7 +3175,7 @@ DropdownMaterial:OnChanged(function(Value)
 	SelectMaterial = Value
 end)
 local Toggle = Tabs.Main:AddToggle("Farm Material", {
-	Title = "Farm Material",
+	Title = "Farm nguyên liệu",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3234,7 +3234,7 @@ spawn(function()
 end)
 local Main = Tabs.Sg:AddSection("Farm Settings")
 local SelectWeapon = Tabs.Sg:AddDropdown("SelectWeapon", {
-	Title = "Select Weapon For Farm",
+	Title = "chọn vũ khí farm",
 	Description = "",
 	Values = {
 		"Melee",
@@ -3372,7 +3372,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Sg:AddToggle("Fast Attack", {
-	Title = "Fast Attack",
+	Title = "oánh nhanh",
 	Description = "",
 	Default = false,
 	Callback = function()
@@ -3440,7 +3440,7 @@ end)
 
 HookRemotes()
 local Toggle = Tabs.Sg:AddToggle("Walk on Water", {
-	Title = "Walk on Water",
+	Title = "đi trên nước",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3459,7 +3459,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Sg:AddToggle("Auto Use race V4", {
-	Title = "Auto Use race V4",
+	Title = "auto dùng v4",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3484,7 +3484,7 @@ spawn(function()
 end)
 
 Tabs.Sg:AddButton({
-	Title = "Redeem All Code",
+	Title = "nhận tất cả code",
 	Description = "Redeem all code x2 exp",
 	Callback = function()
 		UseCode()
@@ -3575,14 +3575,14 @@ spawn(function()
 	end
 end)
 Tabs.Sg:AddButton({
-	Title = "Join Pirates Team",
+	Title = "vào hải tặc",
 	Description = "",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
 	end
 })
 Tabs.Sg:AddButton({
-	Title = "Join Marines Team",
+	Title = "vô hải quân",
 	Description = "",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Marines")
@@ -3590,7 +3590,7 @@ Tabs.Sg:AddButton({
 })
       
 Tabs.Sg:AddButton({
-	Title = "Fps Booster",
+	Title = "tăng tốc máy",
 	Description = "Boost your fps",
 	Callback = function()
 		FPSBooster()
@@ -3639,7 +3639,7 @@ function FPSBooster()
 	end
 end
 local Toggle = Tabs.Q:AddToggle("Auto Unlock Sea 2", {
-	Title = "Auto Second Sea",
+	Title = "auto làm nhiệm vụ sang sea 2",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3707,7 +3707,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Q:AddToggle("Auto Unlock Sea 3", {
-	Title = "Auto Third Sea",
+	Title = "auto làm nhiệm vụ sea3",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3756,7 +3756,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Swords", {
-	Title = "Auto Saber [ Fully ]",
+	Title = "auto lấy saber [ Fully ]",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3870,7 +3870,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Koko [ Fully ]", {
-	Title = "Auto Koko",
+	Title = "Auto làm Koko",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3910,7 +3910,7 @@ spawn(function()
 	end)
 end)
 local Toggle = Tabs.I:AddToggle("Auto Buy Legendary Sword", {
-	Title = "Auto Buy Legendary Sword",
+	Title = "Auto Mua Legendary Sword",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3933,7 +3933,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Buy True Triple Katana", {
-	Title = "Auto Buy True Triple Katana",
+	Title = "Auto Mua True Triple Katana",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3956,7 +3956,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Tushita", {
-	Title = "Auto Tushita",
+	Title = "Auto lấy Tushita",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -3987,7 +3987,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Yama", {
-	Title = "Auto Yama",
+	Title = "Auto lấy Yama",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -4008,7 +4008,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Hallow Scythe [ Fully ]", {
-	Title = "Auto Hallow Scythe [ Fully ]",
+	Title = "Auto lưỡi hái tử thần [ Fully ]",
 	Description = "Need On Auto Random Bones",
 	Default = false,
 	Callback = function(Value)
@@ -4097,7 +4097,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Q:AddToggle("Auto Elite", {
-	Title = "Auto Elite",
+	Title = "Auto săn Elite",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -4167,7 +4167,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Q:AddToggle("Auto Raids Castle", {
-	Title = "Auto Raids Castle",
+	Title = "Auto đánh lấu đài hải tặc",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -4209,7 +4209,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Q:AddToggle("Auto Race V2", {
-	Title = "Auto Race V2",
+	Title = "Auto lấy tộc V2",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -4266,7 +4266,7 @@ spawn(function()
 	end)
 end)
 local Toggle = Tabs.I:AddToggle("Auto Skull Guitar", {
-	Title = "Auto Skull Guitar",
+	Title = "Auto lấy Soul Guitar",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -4391,7 +4391,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.I:AddToggle("Auto Cursed Dual Katana", {
-	Title = "Auto Cursed Dual Katana",
+	Title = "Auto song kiếm nguyền rủa",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
@@ -4817,7 +4817,7 @@ spawn(function()
 	end
 end)
 local Toggle = Tabs.Q:AddToggle("Auto Core", {
-	Title = "Auto Factory",
+	Title = "Auto nhà máy",
 	Description = "",
 	Default = false,
 	Callback = function(Value)
