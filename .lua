@@ -7440,7 +7440,7 @@ function UpdateRealFruitEsp()
                     name.TextYAlignment='Top'
                     name.BackgroundTransparency=1
                     name.TextStrokeTransparency=0.5
-                    name.TextColor3=Color3.fromRGB(255, 0, 0)
+                    name.TextColor3=Color3.fromRGB(0, 0, 0)
                     name.Text=(v.Name .. ' \n' .. round((game:GetService('Players').LocalPlayer.Character.Head.Position-v.Handle.Position).Magnitude/3) .. ' Distance')
                 else
                     v.Handle['NameEsp'..Number].TextLabel.Text=(v.Name .. ' ' .. round((game:GetService('Players').LocalPlayer.Character.Head.Position-v.Handle.Position).Magnitude/3) .. ' Distance')
