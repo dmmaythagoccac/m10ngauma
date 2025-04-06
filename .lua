@@ -1728,7 +1728,7 @@ while wait() do
                         TextLabel.BackgroundTransparency=1.000
                         TextLabel.Size=UDim2.new(0, 200, 0, 50)
                         TextLabel.Font=Enum.Font.GothamBold
-                        TextLabel.TextColor3=Color3.fromRGB(7, 236, 240)
+                        TextLabel.TextColor3=Color3.fromRGB(0, 0, 0)
                         TextLabel.Text.Size=35
                     end
                     local Dis = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.HumanoidRootPart.Position).Magnitude)
