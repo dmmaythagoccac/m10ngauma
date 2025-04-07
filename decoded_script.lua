@@ -49,6 +49,3 @@ Farm:AddSection("Section")
 	350,
 	function()
 	end})
-local Farm = Windows:MakeTab({"Farm"}"
-
-Farm:NewSection("Auto Farm")
