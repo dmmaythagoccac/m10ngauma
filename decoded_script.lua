@@ -51,4 +51,4 @@ Farm:AddSection("Section")
 	end})
 local Farm = Windows:MakeTab({"Farm"}"
 
-local MainSection = Tab:NewSection("Auto Farm")e
+Farm:NewSection("Auto Farm")
