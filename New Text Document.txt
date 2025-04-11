@@ -1,12 +1,12 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/daucobonhi/UiRedzV5/refs/heads/main/DemoUi.lua"))();
 
    local Windows = redzlib:MakeWindow({
-	Title = "TBoy Ui Redz",
-	SubTitle = "kaka",
+	Title = "Chú Roblox Hub",
+	SubTitle = "hâhahahahahahahahahahahahahha",
 	SaveFolder = "Blox Fruits.lua"
 })
 Windows:AddMinimizeButton({
-  Button = { Image = "rbxassetid://83190276951914", BackgroundTransparency = 0 },
+  Button = { Image = "rbxassetid://129934580298278", BackgroundTransparency = 0 },
   Corner = { CornerRadius = UDim.new(0, 6) }
 })
 
@@ -18,3 +18,7 @@ local Quest = Windows:MakeTab({"Nhiệm Vụ Và Vật Phẩm"})
 local Fruits = Windows:MakeTab({"Trái Và Tập Kích"})
 local Ntfi = Windows:MakeTab({"thông tin"})
 local Shop = Windows:MakeTab({"Cửa Hàng"})
+local Misc = Windows:MakeTab({"Khác"})
+local Teleport = Windows:MakeTab({"Dịch Chuyển"})
+local Stast = Windows:MakeTab({"Chỉ Số"})
+local Esp = Windows:MakeTab({"Giao Diện"})
