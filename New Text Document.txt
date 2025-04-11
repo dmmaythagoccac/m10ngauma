@@ -61,13 +61,19 @@ Farm:AddSection("tuỳ chọn farm")
 	end
 })
 
-    FarmTab:AddToggle({
-	"Bật Auto Farm",
-	false,
-	function(state)
-		_G.AutoFarm = state
-		while _G.AutoFarm do task.wait(0.2)
-			-- Logic farm (thêm sau tùy bạn)
+Farm:AddDropdown({
+	Name = "Chọn Kích Thước",
+	Default = "Medium",
+	Options = {"Small", "Medium", "Large", "Bigger"},
+	Callback = function(opt)
+		local sizes = {
+			["Small"] = UDim2.new(0, 450, 0, 300),
+			["Medium"] = UDim2.new(0, 600, 0, 400),
+			["Large"] = UDim2.new(0, 750, 0, 500),
+			["Bigger"] = UDim2.new(0, 900, 0, 600)
+		}
+		if sizes[opt] then
+			Windows.Gui.Size = sizes[opt]
 		end
 	end
 })
