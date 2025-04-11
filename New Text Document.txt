@@ -1,0 +1,73 @@
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/daucobonhi/UiRedzV5/refs/heads/main/DemoUi.lua"))();
+
+   local Windows = redzlib:MakeWindow({
+	Title = "TBoy Ui Redz",
+	SubTitle = "kaka",
+	SaveFolder = "Blox Fruits.lua"
+})
+Windows:AddMinimizeButton({
+  Button = { Image = "rbxassetid://83190276951914", BackgroundTransparency = 0 },
+  Corner = { CornerRadius = UDim.new(0, 6) }
+})
+
+local Main = Windows:MakeTab({"Discord","Info"})
+
+Main:AddSection("Section")
+
+    Main:AddToggle({
+		"toggle",
+		false,
+		function()
+		end})
+		
+   Main:AddDropdown({
+	Name = "Dropdown",
+	Default = false,
+	Options = {
+		"1",
+		"2",
+		"3"
+	},
+	Callback = function()
+	end})
+	
+	Main:AddButton({
+	Name = "Button",
+	Callback = function()
+	end})
+	
+	local Paragraph = Main:AddParagraph({
+	Title = "Paragraph Tool",
+	Desc = ""
+   })
+
+  Main:AddSlider({
+ 	"Slider",
+	50,
+	350,
+	5,
+	350,
+	function()
+	end})
+local Farm = Windows:MakeTab({"Farm"})
+
+Farm:AddSection("tuỳ chọn farm")
+    Farm:AddDropdown({
+	Name = "Chọn Vũ Khí",
+	Default = "Melee",
+	Options = {"Melee", "Sword", "Blox Fruit", "Gun"},
+	Callback = function(opt)
+		_G.FarmWeapon = opt
+	end
+})
+
+    FarmTab:AddToggle({
+	"Bật Auto Farm",
+	false,
+	function(state)
+		_G.AutoFarm = state
+		while _G.AutoFarm do task.wait(0.2)
+			-- Logic farm (thêm sau tùy bạn)
+		end
+	end
+})
