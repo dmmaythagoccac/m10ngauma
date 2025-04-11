@@ -11,83 +11,10 @@ Windows:AddMinimizeButton({
 })
 
 local Main = Windows:MakeTab({"Discord","Info"})
-
-Main:AddSection("Section")
-
-    Main:AddToggle({
-		"toggle",
-		false,
-		function()
-		end})
-		
-   Main:AddDropdown({
-	Name = "Dropdown",
-	Default = false,
-	Options = {
-		"1",
-		"2",
-		"3"
-	},
-	Callback = function()
-	end})
-	
-	Main:AddButton({
-	Name = "Button",
-	Callback = function()
-	end})
-	
-	local Paragraph = Main:AddParagraph({
-	Title = "Paragraph Tool",
-	Desc = ""
-   })
-
-  Main:AddSlider({
- 	"Slider",
-	50,
-	350,
-	5,
-	350,
-	function()
-	end})
-local Farm = Windows:MakeTab({"Farm"})
-
-Farm:AddSection("tuỳ chỉnh")
-    Farm:AddDropdown({
-	Name = "Chọn Vũ Khí",
-	Default = "Melee",
-	Options = {"Melee", "Sword", "Blox Fruit", "Gun"},
-	Callback = function(opt)
-		_G.FarmWeapon = opt
-	end
-})
-
-    Farm:AddDropdown({
-	Name = "Chọn Kích Thước",
-	Default = "Medium",
-	Options = {"Small", "Medium", "Large", "Bigger"},
-	Callback = function(opt)
-		local sizes = {
-			["Small"] = UDim2.new(0, 450, 0, 300),
-			["Medium"] = UDim2.new(0, 600, 0, 400),
-			["Large"] = UDim2.new(0, 750, 0, 500),
-			["Bigger"] = UDim2.new(0, 900, 0, 600)
-		}
-		if sizes[opt] then
-			Windows.Gui.Size = sizes[opt]
-		end
-	end
-})
-
-Farm:AddSection("Farm")
-
-    Farm:AddToggle({
-	"Cày Cấp",
-	"false",
-	function()
-	end})
-
-	Farm:AddToggle({
-	"Đánh Quái Gần",
-	"false",
-	function()
-	end})
+local Farm = Windows:MakeTab({"Farm","House"})
+local Sea = Windows:MakeTab({"Biển"})
+local Island = Windows:MakeTab({"Đảo"})
+local Quest = Windows:MakeTab({"Nhiệm Vụ Và Vật Phẩm"})
+local Fruits = Windows:MakeTab({"Trái Và Tập Kích"})
+local Ntfi = Windows:MakeTab({"thông tin"})
+local Shop = Windows:MakeTab({"Cửa Hàng"})
