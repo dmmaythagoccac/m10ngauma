@@ -51,7 +51,7 @@ Main:AddSection("Section")
 	end})
 local Farm = Windows:MakeTab({"Farm"})
 
-Farm:AddSection("tuỳ chọn farm")
+Farm:AddSection("tuỳ chỉnh")
     Farm:AddDropdown({
 	Name = "Chọn Vũ Khí",
 	Default = "Melee",
@@ -61,7 +61,7 @@ Farm:AddSection("tuỳ chọn farm")
 	end
 })
 
-Farm:AddDropdown({
+    Farm:AddDropdown({
 	Name = "Chọn Kích Thước",
 	Default = "Medium",
 	Options = {"Small", "Medium", "Large", "Bigger"},
@@ -77,3 +77,17 @@ Farm:AddDropdown({
 		end
 	end
 })
+
+Farm:AddSection("Farm")
+
+    Farm:AddToggle({
+	"Cày Cấp",
+	"false",
+	function()
+	end})
+
+	Farm:AddToggle({
+	"Đánh Quái Gần",
+	"false",
+	function()
+	end})
