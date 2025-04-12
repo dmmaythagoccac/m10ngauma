@@ -2400,7 +2400,7 @@ Main:AddSection("Thông Tin")
 
 Farm:AddSection("Tuỳ Chỉnh")
 
-    Farm:AddToggle("Farm Level",{
+    Farm:AddToggle({
     Title = "cày cấp",
 	Description = "",
 	Default = false,
@@ -2465,6 +2465,44 @@ spawn(function()
 						BringFarmLevel = false
 						if game:GetService("ReplicatedStorage"):FindFirstChild(Monster) then
 							Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Monster).HumanoidRootPart.CFrame * randomPos)
+						end
+					end
+				end
+			end)
+		end
+	end
+end)
+    Main:AddToggle({
+	Title = "đánh quái vật gần",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoNear = Value
+		StopTween(_G.AutoNear)
+	end
+})
+spawn(function()
+	while wait() do
+		if _G.AutoNear then
+			pcall(function()
+				for i, v in pairs (game.Workspace.Enemies:GetChildren()) do
+					if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+						if v.Name then
+							if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000 then
+								repeat
+									wait()
+									Equip_Weapon_Farm_All(_G.SelectWeapon)
+									AutoHaki()
+									PosMon = v.HumanoidRootPart.CFrame
+									Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 3))
+									v.HumanoidRootPart.CanCollide = false
+									v.Humanoid.WalkSpeed = 0
+									v.Head.CanCollide = false
+									v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+									BringFarmLevel = true
+								until not _G.AutoNear or not v.Parent or v.Humanoid.Health <= 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
+								BringFarmLevel = false
+							end
 						end
 					end
 				end
