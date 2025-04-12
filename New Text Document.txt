@@ -2374,7 +2374,9 @@ local Teleport = Windows:MakeTab({"Tab Dịch Chuyển"})
 local Shop = Windows:MakeTab({"Tab Cửa Hàng"})
 local Misc = Windows:MakeTab({"Tab Khác"})
 local Hop = Windows:MakeTab({"Tab Hop"})
-Tabs.Main:AddButton({
+Tab.Main:AddSection("Thông Tin")
+
+Tab.Main:AddButton({
         Title="Chú Roblox",
         Description="Discord",
         Callback=function()
