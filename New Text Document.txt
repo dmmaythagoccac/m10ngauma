@@ -2374,12 +2374,26 @@ local Teleport = Windows:MakeTab({"Tab Dịch Chuyển"})
 local Shop = Windows:MakeTab({"Tab Cửa Hàng"})
 local Misc = Windows:MakeTab({"Tab Khác"})
 local Hop = Windows:MakeTab({"Tab Hop"})
-Tab.Main:AddSection("Thông Tin")
 
-Tab.Main:AddButton({
-        Title="Chú Roblox",
-        Description="Discord",
+Main:AddSection("Thông Tin")
+
+    Main:AddButton({
+    Title="Chú Roblox",
+    Description="Discord",
         Callback=function()
             setclipboard(tostring("https://discord.gg/yzE6hrKf")) 
         end
+})
+
+    Main:AddButton({
+    Title="Chú Roblox",
+    Description="Youtube",
+    Callback=function()
+        setclipboard(tostring("https://www.youtube.com/@churoblox"))
+       end
+})
+
+    Main:AddParagraph({
+    Title="Phát Triển Bởi",
+    Content="Karse"
 })
