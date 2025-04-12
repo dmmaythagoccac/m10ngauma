@@ -2396,13 +2396,3 @@ Main:AddSection("Thông tin")
     Content="Karse Đẹp zai Nhà Ta",    
     end
 })
-
-Farm:AddSection("Tuỳ Chỉnh")
-
-    Farm:AddDropdown({
-    Title = "Vũ Khí",
-    Description = "",
-    Values = {'Melee', 'Sword', 'Blox Fruit'},
-    Multi = false,
-    Default = 1,
-})
