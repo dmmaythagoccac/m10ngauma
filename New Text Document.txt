@@ -2373,3 +2373,71 @@ local Raid = Windows:MakeTab({"Tab Raid"})
 local Teleport = Windows:MakeTab({"Tab Dịch Chuyển"})
 local Shop = Windows:MakeTab({"Tab Cửa Hàng"})
 local Misc = Windows:MakeTab({"Tab Khác"})
+local Hop = Windows:MakeTab({"Tab Hop"})
+
+Main:AddSection("Thông tin")
+
+    Main:AddButton({
+    Title="Chú Roblox",
+    Description="Discord",
+    Callback=function()
+        setclipboard(tostring("https://discord.gg/yzE6hrKf")) 
+        end
+})  
+    Main:AddButton({
+    Title="Chú Roblox",
+    Description="Discord",
+    Callback=function()
+        setclipboard(tostring("https://www.youtube.com/@churoblox"))
+       end
+})
+    Main:AddParagraph({
+    Title="Phát Triển Bởi",
+    Content="Karse Đẹp zai Nhà Ta",    
+    end
+})
+
+Farm:AddSection("Tuỳ Chỉnh")
+
+    Farm:AddDropdown({
+    Title = "Vũ Khí",
+    Description = "",
+    Values = {'Melee', 'Sword', 'Blox Fruit'},
+    Multi = false,
+    Default = 1,
+})
+DropdownSelectWeapon:SetValue('Melee')
+DropdownSelectWeapon:OnChanged(function(Value)
+    ChooseWeapon = Value
+end)
+task.spawn(function()
+    while wait() do
+        pcall(function()
+            if ChooseWeapon == "Melee" then
+                for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Melee" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif ChooseWeapon == "Sword" then
+                for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Sword" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif ChooseWeapon == "Blox Fruit" then
+                for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Blox Fruit" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            SelectWeapon = v.Name
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
