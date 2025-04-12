@@ -2363,23 +2363,6 @@ spawn(function()
 	end)
 end)
 local Main = Windows:MakeTab({"Discord","Info"})
-
-Main:AddSection("Thông Tin")
-    
-    Main:AddButton({
-    Title="Chú Roblox",
-    Description="Discord",
-        Callback=function()
-            setclipboard(tostring("https://discord.gg/yzE6hrKf")) 
-        end 
-})
-    Main:AddButton({
-    Title="Chú Roblox".
-    Description="Youtube",
-    Callback=function()
-        setclipboard(tostring("https://www.youtube.com/@churoblox"))
-       end
-})
 local Farm = Windows:MakeTab({"Tab Farm"})
 local Sea = Windows:MakeTab({"Tab Sea"})
 local Island = Windows:MakeTab({"Tab Đảo"})
@@ -2391,3 +2374,10 @@ local Teleport = Windows:MakeTab({"Tab Dịch Chuyển"})
 local Shop = Windows:MakeTab({"Tab Cửa Hàng"})
 local Misc = Windows:MakeTab({"Tab Khác"})
 local Hop = Windows:MakeTab({"Tab Hop"})
+Tabs.Main:AddButton({
+        Title="Chú Roblox",
+        Description="Discord",
+        Callback=function()
+            setclipboard(tostring("https://discord.gg/yzE6hrKf")) 
+        end
+})
