@@ -2374,5 +2374,3 @@ local Teleport = Windows:MakeTab({"Tab Dịch Chuyển"})
 local Shop = Windows:MakeTab({"Tab Cửa Hàng"})
 local Misc = Windows:MakeTab({"Tab Khác"})
 local Hop = Windows:MakeTab({"Tab Hop"})
-
-Main:AddSection("Thông tin")
