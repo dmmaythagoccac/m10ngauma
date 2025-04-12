@@ -2376,23 +2376,3 @@ local Misc = Windows:MakeTab({"Tab Khác"})
 local Hop = Windows:MakeTab({"Tab Hop"})
 
 Main:AddSection("Thông tin")
-
-    Main:AddButton({
-    Title="Chú Roblox",
-    Description="Discord",
-    Callback=function()
-        setclipboard(tostring("https://discord.gg/yzE6hrKf")) 
-        end
-})  
-    Main:AddButton({
-    Title="Chú Roblox",
-    Description="Discord",
-    Callback=function()
-        setclipboard(tostring("https://www.youtube.com/@churoblox"))
-       end
-})
-    Main:AddParagraph({
-    Title="Phát Triển Bởi",
-    Content="Karse Đẹp zai Nhà Ta",    
-    end
-})
