@@ -2449,74 +2449,7 @@ spawn(function()
 	end
 end)
     Farm:AddToggle({
-	Title = "cày cấp",
-	Description = "",
-	Default = false,
-	Callback = function(Value)
-		_G.AutoFarmLevel = Value
-		StopTween(_G.AutoFarmLevel)
-	end
-})
-spawn(function()
-	while task.wait() do
-		if _G.AutoFarmLevel then
-			pcall(function()
-				local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-				if not string.find(QuestTitle, NameMonster) then
-					BringFarmLevel = false
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-				end
-				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-					BringFarmLevel = false
-					CheckLevel()
-					if BypassTP then
-						if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude > 1500 then
-							BTP(CFrameQuest)
-						elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude < 1500 then
-							Tween(CFrameQuest)
-						end
-					else
-						Tween(CFrameQuest)
-					end
-					if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude <= 5 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, LvQuest)
-					end
-				elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-					CheckLevel()
-					if game:GetService("Workspace").Enemies:FindFirstChild(Monster) then
-						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-								if v.Name == Monster then
-									if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMonster) then
-										repeat
-											task.wait()
-											Equip_Weapon_Farm_All(_G.SelectWeapon)
-											AutoHaki()
-											PosMon = v.HumanoidRootPart.CFrame
-											Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 3))
-											v.HumanoidRootPart.CanCollide = false
-											v.Humanoid.WalkSpeed = 0
-											v.Head.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-											BringFarmLevel = true
-										until not _G.AutoFarmLevel or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-									else
-										BringFarmLevel = false
-										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-									end
-								end
-							end
-						end
-					else
-						Tween(CFrameMonster * randomPos)
-						UnEquip_Weapon_Farm_All(_G.SelectWeapon)
-						BringFarmLevel = false
-						if game:GetService("ReplicatedStorage"):FindFirstChild(Monster) then
-							Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Monster).HumanoidRootPart.CFrame * randomPos)
-						end
-					end
-				end
-			end)
-		end
-	end
-end)
+    "toggle",
+     false,
+     function()
+end})
