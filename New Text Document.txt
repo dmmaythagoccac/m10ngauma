@@ -2403,7 +2403,7 @@ Farm:AddSection("Tuỳ Chỉnh")
     Farm:AddDropdown({
 	Title = "chọn vũ khí farm",
 	Description = "",
-	Values = {
+	Options = {
 		"Melee",
 		"Sword",
 		"Gun",
