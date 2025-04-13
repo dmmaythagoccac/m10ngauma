@@ -2401,14 +2401,14 @@ Main:AddSection("Thông Tin")
 Farm:AddSection("Tuỳ Chỉnh")
 
     Farm:AddDropdown({
-	Title = "chọn vũ khí farm",
+	"chọn vũ khí farm",
 	Description = "",
 	Options = {
 		"Melee",
 		"Sword",
-		"Gun",
+        "Gun",
 		"Blox Fruits"
-	},
+    },
 	Multi = false,
 	Default = 1,
 })
