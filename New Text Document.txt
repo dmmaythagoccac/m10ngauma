@@ -2,7 +2,7 @@ local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/dauco
 
    local Windows = redzlib:MakeWindow({
 	Title = "Chú Roblox Hub",
-	SubTitle = "hâhahahahahahahahahahahahahha",
+	SubTitle = "By Karse",
 	SaveFolder = "Blox Fruits.lua"
 })
 Windows:AddMinimizeButton({
@@ -2991,4 +2991,322 @@ end
 DropdownBoss:SetValue("")
 DropdownBoss:OnChanged(function(Value)
 	_G.SelectBoss = Value
+end)
+
+    Farm:AddToggle({
+    Title = "Farm Boss đã chọn",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoBoss = Value
+		StopTween(_G.AutoBoss)
+	end
+})
+      
+spawn(function()
+	while wait() do
+		if _G.AutoBoss and BypassTP then
+			pcall(function()
+				if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if v.Name == _G.SelectBoss then
+							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+								repeat
+									wait()
+									AutoHaki()
+									BringFarmLevel = true
+									v.HumanoidRootPart.CanCollide = false
+									v.Humanoid.WalkSpeed = 0
+									v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+									Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+									sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+								until not _G.AutoBoss or not v.Parent or v.Humanoid.Health <= 0
+								BringFarmLevel = false
+							end
+						end
+					end
+				elseif game.ReplicatedStorage:FindFirstChild(_G.SelectBoss) then
+					if ((game.ReplicatedStorage:FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+						Tween(game.ReplicatedStorage:FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame)
+					else
+						BTP(game.ReplicatedStorage:FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame)
+					end
+				end
+			end)
+		end
+	end
+end)
+
+spawn(function()
+	while wait() do
+		if _G.AutoBoss and not BypassTP then
+			pcall(function()
+				if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if v.Name == _G.SelectBoss then
+							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+								repeat
+									wait()
+									AutoHaki()
+									Equip_Weapon_Farm_All(_G.SelectWeapon)
+									v.HumanoidRootPart.CanCollide = false
+									v.Humanoid.WalkSpeed = 0
+									v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+									Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+									sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+								until not _G.AutoBoss or not v.Parent or v.Humanoid.Health <= 0
+							end
+						end
+					end
+				else
+					if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
+						Tween(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(0, 34, 4))
+					end
+				end
+			end)
+		end
+	end
+end)
+
+Farm:AddSection("Nguyên Liệu")	
+if First_Sea then
+	MaterialList = {
+		"Scrap Metal",
+		"Leather",
+		"Angel Wings",
+		"Magma Ore",
+		"Fish Tail"
+	}
+elseif Second_Sea then
+	MaterialList = {
+		"Scrap Metal",
+		"Leather",
+		"Radioactive Material",
+		"Mystic Droplet",
+		"Magma Ore",
+		"Vampire Fang"
+	}
+elseif Third_Sea then
+	MaterialList = {
+		"Scrap Metal",
+		"Leather",
+		"Demonic Wisp",
+		"Conjured Cocoa",
+		"Dragon Scale",
+		"Gunpowder",
+		"Fish Tail",
+		"Mini Tusk"
+	}
+end
+
+    Farm:AddDropdown({
+	Title = "Chọn Nguyên Liệu",
+	Values = MaterialList,
+	Multi = false,
+	Default = 1,
+})
+DropdownMaterial:SetValue("Conjured Cocoa")
+DropdownMaterial:OnChanged(function(Value)
+	SelectMaterial = Value
+end)
+
+    Farm:AddToggle({
+	Title = "Farm nguyên liệu",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoMaterial = Value
+		StopTween(_G.AutoMaterial)
+	end
+})
+spawn(function()
+	while task.wait() do
+		if _G.AutoMaterial then
+			pcall(function()
+				MaterialMon(SelectMaterial)
+				if BypassTP then
+					if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - MPos.Position).Magnitude > 3500 then
+						BTP(MPos)
+					elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - MPos.Position).Magnitude < 3500 then
+						Tween(MPos)
+					end
+				else
+					Tween(MPos)
+				end
+				if game:GetService("Workspace").Enemies:FindFirstChild(MMon) then
+					for i, v in pairs (game.Workspace.Enemies:GetChildren()) do
+						if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+							if v.Name == MMon then
+								repeat
+									wait()
+									AutoHaki()
+									MakoriGayMag = true
+									Equip_Weapon_Farm_All(_G.SelectWeapon)
+									Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+									v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+									v.HumanoidRootPart.Transparency = 1
+									v.Humanoid.JumpPower = 0
+									v.Humanoid.WalkSpeed = 0
+									v.HumanoidRootPart.CanCollide = false
+									FarmPos = v.HumanoidRootPart.CFrame
+									MonFarm = v.Name
+								until not _G.AutoMaterial or not v.Parent or v.Humanoid.Health <= 0
+								MakoriGayMag = false
+							end
+						end
+					end
+				else
+					for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"].EnemySpawns:GetChildren()) do
+						if string.find(v.Name, Mon) then
+							if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude >= 10 then
+								Tween(v.CFrame * CFrame.new(0, 35, 4))
+							end
+						end
+					end
+				end
+			end)
+		end
+	end
+end)
+
+Farm:AddSection("Cài Đặt")
+
+    Farm:AddDropdown({
+	Title = "Chọn Vũ Khí",
+	Description = "",
+	Values = {
+		"Melee",
+		"Sword",
+		"Gun",
+		"Blox Fruits"
+	},
+	Multi = false,
+	Default = 1,
+})
+SelectWeapon:OnChanged(function(Value)
+	_G.SelectWeapon = Value
+end)
+spawn(function()
+	while task.wait() do
+		pcall(function()
+			local backpack = game.Players.LocalPlayer.Backpack
+			local selectedWeapon = _G.SelectWeapon
+			if selectedWeapon == "Melee" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Melee" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			elseif selectedWeapon == "Sword" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Sword" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			elseif selectedWeapon == "Gun" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Gun" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			elseif selectedWeapon == "Blox Fruit" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Blox Fruit" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			end
+		end)
+	end
+end)
+
+    Farm:AddToggle({
+    Title = "Farm An Toàn",
+	Description = "",
+	Default = true,
+	Callback = function(Value)
+		_G.SafeFarm = Value
+	end
+})
+      
+assert(getrawmetatable)
+grm = getrawmetatable(game)
+setreadonly(grm, false)
+old = grm.__namecall
+grm.__namecall = newcclosure(function(self, ...)
+	local args = {
+		...
+	}
+	if tostring(args[1]) == "TeleportDetect" then
+		return
+	elseif tostring(args[1]) == "CHECKER_1" then
+		return
+	elseif tostring(args[1]) == "CHECKER" then
+		return
+	elseif tostring(args[1]) == "GUI_CHECK" then
+		return
+	elseif tostring(args[1]) == "OneMoreTime" then
+		return
+	elseif tostring(args[1]) == "checkingSPEED" then
+		return
+	elseif tostring(args[1]) == "BANREMOTE" then
+		return
+	elseif tostring(args[1]) == "PERMAIDBAN" then
+		return
+	elseif tostring(args[1]) == "KICKREMOTE" then
+		return
+	elseif tostring(args[1]) == "BR_KICKPC" then
+		return
+	elseif tostring(args[1]) == "BR_KICKMOBILE" then
+		return
+	end
+	return old(self, ...)
+end)
+function CheckAntiCheatBypass()
+	for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+		if v:IsA("LocalScript") then
+			if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
+				v:Destroy()
+			end
+		end
+	end
+	for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+		if v:IsA("LocalScript") then
+			if v.Name == "RobloxMotor6DBugFix" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
+				v:Destroy()
+			end
+		end
+	end
+end
+
+local function bypassAntiExploit()
+	for _, instance in ipairs(filtergc()) do
+		if instance:IsA("AntiExploitSystem") then
+			instance:Destroy()
+		end
+	end
+end
+spawn(function()
+	while wait() do
+		if _G.SafeFarm then
+			pcall(function()
+				CheckAntiCheatBypass()
+				bypassAntiExploit()
+			end)
+		end
+	end
+end)
+function intiAppleHub()
+	_G.antiscan = true
+	getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync
+	getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
+	_G.setfflag = true
+end
+spawn(function()
+	while wait() do
+		if _G.setfflag then
+			setfflag("AbuseReportScreenshot", "False")
+			setfflag("AbuseReportScreenshotPercentage", "0")
+		end
+	end
 end)
