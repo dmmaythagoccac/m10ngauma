@@ -2401,109 +2401,50 @@ Main:AddSection("Thông Tin")
 Farm:AddSection("Tuỳ Chỉnh")
 
     Farm:AddDropdown({
-    Title = "Vũ Khí",
-    Description = "",
-    Values = {
-        "Melee",
-        "Sword",
-        "Blox Fruits"
-    },
-    Multi = false,
-    Default = 1
-});
-v48:SetValue("Melee");
-v48:OnChanged(function()
-    ChooseWeapon = ;
-end);
-task.spawn(function()
-    while wait() do
-        pcall(function()
-            if (ChooseWeapon == "Melee") then
-                for in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if (ToolTip == "Melee") then
-                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(Name)) then
-                            SelectWeapon = Name;
-                        end
-                    end
-                end
-            elseif (ChooseWeapon == "Sword") then
-                for in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if (ToolTip == "Sword") then
-                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(Name)) then
-                            SelectWeapon = Name;
-                        end
-                    end
-                end
-            elseif (ChooseWeapon == "Blox Fruit") then
-                for in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if ("ToolTip == "Blox Fruit") then
-                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(Name)) then
-                            SelectWeapon = Name;
-                        end
-                    end
-                end
-            end
-        end);
-    end
-end);
-
-    Farm:AddToggle({
-	Title = "Auto farm cấp",
-    Description = "",
-    Default = false
-});
-v49:OnChanged(function()
-    _G.AutoFarmLevel = ;
-    if ( == false) then
-        wait();
-        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
-        wait();
-    end
-end);
-ToggleLevel:SetValue(false);
+	Title = "chọn vũ khí farm",
+	Description = "",
+	Values = {
+		"Melee",
+		"Sword",
+		"Gun",
+		"Blox Fruits"
+	},
+	Multi = false,
+	Default = 1,
+})
+SelectWeapon:OnChanged(function(Value)
+	_G.SelectWeapon = Value
+end)
 spawn(function()
-    while task.wait() do
-        if _G.AutoFarmLevel then
-            pcall(function()
-                CheckLevel();
-                if (not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false)) then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest");
-                    Tween(CFrameQ);
-                    if ((CFrameQ.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5) then
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv);
-                    end
-                elseif (string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true)) then
-                    for in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if (FindFirstChild("Humanoid") and :FindFirstChild("HumanoidRootPart") and (v1433.Humanoid.Health > 0)) then
-                            if (Name == Ms) then
-                                repeat
-                                    wait(_G.Fast_Delay);
-                                    AttackNoCoolDown();
-                                    bringmob = true;
-                                    AutoHaki();
-                                    EquipTool(SelectWeapon);
-                                    Tween(HumanoidRootPart.CFrame * Pos);
-                                    HumanoidRootPart.Size = Vector3.new(60, 60, 60);
-                                    HumanoidRootPart.Transparency = 1;
-                                    Humanoid.JumpPower = 0;
-                                    Humanoid.WalkSpeed = 0;
-                                    HumanoidRootPart.CanCollide = false;
-                                    FarmPos = HumanoidRootPart.CFrame;
-                                    MonFarm = Name;
-                                until not _G.AutoFarmLevel or not Parent or (Humanoid.Health <= 0) or not game:GetService("Workspace").Enemies:FindFirstChild(Name) or (game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false)
-                                bringmob = false;
-                            end
-                        end
-                    end
-                    for in pairs(game:GetService("Workspace")['_WorldOrigin'].EnemySpawns:GetChildren()) do
-                        if string.find(Name, NameMon) then
-                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Position).Magnitude >= 10) then
-                                Tween(HumanoidRootPart.CFrame * Pos);
-                            end
-                        end
-                    end
-                end
-            end);
-        end
-    end
-end);
+	while task.wait() do
+		pcall(function()
+			local backpack = game.Players.LocalPlayer.Backpack
+			local selectedWeapon = _G.SelectWeapon
+			if selectedWeapon == "Melee" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Melee" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			elseif selectedWeapon == "Sword" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Sword" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			elseif selectedWeapon == "Gun" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Gun" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			elseif selectedWeapon == "Blox Fruit" then
+				for i, v in pairs(backpack:GetChildren()) do
+					if v.ToolTip == "Blox Fruit" and backpack:FindFirstChild(tostring(v.Name)) then
+						_G.SelectWeapon = v.Name
+					end
+				end
+			end
+		end)
+	end
+end)
