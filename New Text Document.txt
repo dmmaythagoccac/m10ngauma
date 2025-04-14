@@ -3169,9 +3169,9 @@ spawn(function()
 	end
 end)
 
-Farm:AddSection("Cài Đặt")
+Setting:AddSection("Cài Đặt")
 
-    Farm:AddDropdown({
+    Setting:AddDropdown({
 	Title = "Chọn Vũ Khí",
 	Description = "",
 	Values = {
@@ -3220,7 +3220,7 @@ spawn(function()
 	end
 end)
 
-    Farm:AddToggle({
+    Setting:AddToggle({
     Title = "Farm An Toàn",
 	Description = "",
 	Default = true,
@@ -3307,6 +3307,394 @@ spawn(function()
 		if _G.setfflag then
 			setfflag("AbuseReportScreenshot", "False")
 			setfflag("AbuseReportScreenshotPercentage", "0")
+		end
+	end
+end)
+
+    Setting:AddToggle({
+	Title = "oánh nhanh",
+	Description = "",
+	Default = false,
+	Callback = function()
+	end
+})
+      
+local module = {
+	NextAttack = 0,
+	Distance = 55,
+	attackMobs = true,
+	attackPlayers = true
+}
+
+local Player = game:GetService("Players")
+
+function module:GetBladeHits()
+	local BladeHits = {}
+	for _, Enemy in game:GetService("Workspace").Enemies:GetChildren() do
+		if Enemy:FindFirstChild("HumanoidRootPart") then
+			table.insert(BladeHits, Enemy.HumanoidRootPart)
+		end
+	end
+	return BladeHits
+end
+
+function module:attack()
+	local BladeHits = self:GetBladeHits()
+	game:GetService("ReplicatedStorage").Modules.Net:WaitForChild("RE/RegisterAttack"):FireServer(0)
+	for _, Hit in BladeHits do
+		game:GetService("ReplicatedStorage").Modules.Net:WaitForChild("RE/RegisterHit"):FireServer(Hit)
+	end
+end
+
+spawn(function()
+	while wait(0.05) do -- Tăng tốc độ tấn công bằng cách giảm thời gian chờ
+		module:attack()
+	end
+end)
+
+local HookRemotes = (function()
+	for _, remote in ipairs(game:GetDescendants()) do
+		if remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction") then
+			local oldFireServer = remote.FireServer
+			setreadonly(getrawmetatable(remote), false)
+			local meta = getrawmetatable(remote)
+			local oldIndex = meta.__index
+			meta.__index = function(self, key)
+				if key == "FireServer" then
+					return function(_, ...)
+						local args = {
+							...
+						}
+						if math.random(1, 10) > 8 then
+							task.wait(math.random(1, 5) / 1000)
+						end
+						return oldFireServer(self, unpack(args))
+					end
+				end
+				return oldIndex(self, key)
+			end
+			setreadonly(meta, true)
+		end
+	end
+end)
+
+    Setting:AddToggle({
+	Title = "đi trên nước",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.WalkWater = Value
+	end
+})
+spawn(function()
+	while task.wait() do
+		pcall(function()
+			if _G.WalkWater then
+				game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000, 112, 1000)
+			else
+				game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000, 80, 1000)
+			end
+		end)
+	end
+end)
+
+    Setting:AddToggle({
+	Title = "auto dùng v4",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoV4 = Value
+	end
+})
+spawn(function()
+	while task.wait() do
+		if _G.AutoV4 then
+			pcall(function()
+				if game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") 
+                    and game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 
+                    and game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") and not game.Players.LocalPlayer.Character.RaceTransformed.Value   then
+					local args = {
+						[1] = true
+					}
+					game:GetService("Players").LocalPlayer.Backpack.Awakening.RemoteFunction:InvokeServer(unpack(args))
+				end
+			end)
+		end
+	end
+end)
+
+    Setting:AddButton({
+	Title = "nhận tất cả code",
+	Description = "Redeem all code x2 exp",
+	Callback = function()
+		UseCode()
+	end
+})
+
+function UseCode(Text)
+	game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
+end
+UseCode("Sub2Fer999")
+UseCode("Enyu_is_Pro")
+UseCode("Magicbus")
+UseCode("JCWK")
+UseCode("Starcodeheo")
+UseCode("Bluxxy")
+UseCode("THEGREATACE")
+UseCode("SUB2GAMERROBOT_EXP1")
+UseCode("StrawHatMaine")
+UseCode("Sub2OfficialNoobie")
+UseCode("SUB2NOOBMASTER123")
+UseCode("Sub2Daigrock")
+UseCode("Axiore")
+UseCode("TantaiGaming")
+UseCode("STRAWHATMAINE")
+    Setting:AddToggle({
+	Title = "Auto Click",
+	Description = "",
+	Default = true,
+	Callback = function(Value)
+		_G.click = Value
+	end
+})
+spawn(function()
+	game:GetService("RunService").RenderStepped:Connect(function()
+		if _G.click then
+			pcall(function()
+				game:GetService'VirtualUser':CaptureController()
+				game:GetService'VirtualUser':Button1Down(Vector2.new(0, 1, 0, 1))
+			end)
+		end
+	end)
+end)
+
+    Setting:AddToggle({
+	Title = "Delete Effect",
+	Description = "",
+	Default = false,
+	Callback = function()
+            --hmm
+	end
+})
+    Setting:AddToggle({
+	Title = "Auto Haki",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AUTOHAKI = Value
+	end
+})
+spawn(function()
+	while task.wait() do
+		if _G.AUTOHAKI then
+			if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+				local args = {
+					[1] = "Buso"
+				}
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+			end
+		end
+	end
+end)
+    Setting:AddToggle({
+	Title = "Auto Rejoin",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoRejoin = Value
+	end
+})
+spawn(function()
+	while wait() do
+		if _G.AutoRejoin then
+			getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+				if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+					game:GetService("TeleportService"):Teleport(game.PlaceId)
+				end
+			end)
+		end
+	end
+end)
+    Setting:AddButton({
+	Title = "vào hải tặc",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
+	end
+})
+    Setting:AddButton({
+	Title = "vô hải quân",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Marines")
+	end
+})
+
+    Setting:AddButton({
+	Title = "tăng tốc máy",
+	Description = "Boost your fps",
+	Callback = function()
+		FPSBooster()
+	end
+})
+
+function FPSBooster()
+	local decalsyeeted = true
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	sethiddenproperty(l, "Technology", 2)
+	sethiddenproperty(t, "Decoration", false)
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 0
+	l.GlobalShadows = false
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i, v in pairs(g:GetDescendants()) do
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.TextureID = 10385902758728957
+		end
+	end
+	for i, e in pairs(l:GetChildren()) do
+		if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+			e.Enabled = false
+		end
+	end
+end
+Quest:AddSection("Sang sea")
+
+    Quest:AddToggle({
+	Title = "auto làm nhiệm vụ sang sea 2",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoSecondSea = Value
+		StopTween(_G.AutoSecondSea)
+	end
+})
+spawn(function()
+	while task.wait() do
+		if _G.AutoSecondSea then
+			pcall(function()
+				local Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
+				if Lv >= 700 and World1 then
+					if game:GetService("Workspace").Map.Ice.Door.CanCollide == false and game:GetService("Workspace").Map.Ice.Door.Transparency == 1 then
+						local CFrame1 = CFrame.new(4849.29883, 5.65138149, 719.611877)
+						repeat
+							Tween(CFrame1)
+							wait()
+						until (CFrame1.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or _G.AutoSecondSea == false
+						wait(1.1)
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress", "Detective")
+						wait(0.5)
+						Equip_Weapon_Farm_All("Key")
+						repeat
+							Tween(CFrame.new(1347.7124, 37.3751602, -1325.6488))
+							wait()
+						until (Vector3.new(1347.7124, 37.3751602, -1325.6488) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or _G.AutoSecondSea == false
+						wait(0.5)
+					else
+						if game:GetService("Workspace").Map.Ice.Door.CanCollide == false and game:GetService("Workspace").Map.Ice.Door.Transparency == 1 then
+							if game:GetService("Workspace").Enemies:FindFirstChild("Ice Admiral") then
+								for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Ice Admiral" then
+										if not v.Humanoid.Health <= 0 then
+											if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+												OldCFrameSecond = v.HumanoidRootPart.CFrame
+												repeat
+													task.wait()
+													AutoHaki()
+													Equip_Weapon_Farm_All(_G.SelectWeapon)
+													v.HumanoidRootPart.CanCollide = false
+													v.Humanoid.WalkSpeed = 0
+													v.Head.CanCollide = false
+													v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+													v.HumanoidRootPart.CFrame = OldCFrameSecond
+													Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 3))
+													sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+												until not _G.AutoSecondSea or not v.Parent or v.Humanoid.Health <= 0
+											end
+										else
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+										end
+									end
+								end
+							else
+								if game:GetService("ReplicatedStorage"):FindFirstChild("Ice Admiral") then
+									Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Ice Admiral").HumanoidRootPart.CFrame * CFrame.new(5, 10, 7))
+								end
+							end
+						end
+					end
+				end
+			end)
+		end
+	end
+end)
+    Quest:AddToggle({
+	Title = "auto làm nhiệm vụ sea3",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoThirdSea = Value
+		StopTween(_G.AutoThirdSea)
+	end
+})
+spawn(function()
+	while task.wait() do
+		if _G.AutoThirdSea then
+			pcall(function()
+				if game:GetService("Players").LocalPlayer.Data.Level.Value >= 1500 and World2 then
+					_G.AutoFarmLevel = false
+					if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "General") == 0 then
+						Tween(CFrame.new(-1926.3221435547, 12.819851875305, 1738.3092041016))
+						if (CFrame.new(-1926.3221435547, 12.819851875305, 1738.3092041016).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+							wait(1.5)
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ZQuestProgress", "Begin")
+						end
+						wait(1.8)
+						if game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") then
+							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if v.Name == "rip_indra" then
+									OldCFrameThird = v.HumanoidRootPart.CFrame
+									repeat
+										task.wait()
+										AutoHaki()
+										Equip_Weapon_Farm_All(_G.SelectWeapon)
+										Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 20, 0))
+										v.HumanoidRootPart.CFrame = OldCFrameThird
+										v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+										v.HumanoidRootPart.CanCollide = false
+										v.Humanoid.WalkSpeed = 0
+										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+										sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+									until _G.AutoThirdSea == false or v.Humanoid.Health <= 0 or not v.Parent
+								end
+							end
+						elseif not game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") and (CFrame.new(-26880.93359375, 22.848554611206, 473.18951416016).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1000 then
+							Tween(CFrame.new(-26880.93359375, 22.848554611206, 473.18951416016))
+						end
+					end
+				end
+			end)
 		end
 	end
 end)
