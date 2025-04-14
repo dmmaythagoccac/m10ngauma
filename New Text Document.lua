@@ -2401,10 +2401,7 @@ local PVP = Windows:MakeTab({"Đánh Nhau"})
 local TP = Windows:MakeTab({"Dịch Chuyển"})
 local Shop = Windows:MakeTab({"Cửa Hàng"})
 local Sg = Windows:MakeTab({"Cài Đặt"})
-local Options = Fluent.Options
-do
-end
-PosY = 50
+
 M:AddSection("Thông Tin")
 
     M:AddButton({
