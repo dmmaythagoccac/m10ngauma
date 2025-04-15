@@ -2497,7 +2497,7 @@ F:AddSection("Farm")
         end
     end)
     F:AddToggle({
-		Title = "đánh quái vật gần",
+		Title = "Cày Quái Vận Gần",
 		Description = "",
 		Default = false,
 		Callback = function(Value)
@@ -2641,6 +2641,113 @@ F:AddSection("Katakuri")
 										Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
 									end
 								end
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
+    F:AddToggle({
+		Title = "Farm Dough King",
+		Description = "",
+		Default = false,
+		Callback = function(Value)
+			_G.AutoKillDoughtKing = Value
+		end
+	})
+	spawn(function()
+		while task.wait() do
+			if  _G.AutoKillDoughtKing and World3 then
+				pcall(function()
+					if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if v.Name == "Dough King" then
+								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+									repeat
+										task.wait()
+										AutoHaki()
+										Equip_Weapon_Farm_All(_G.SelectWeapon)
+										v.HumanoidRootPart.CanCollide = false
+										v.Humanoid.WalkSpeed = 0
+										v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+										Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+										sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+									until not  _G.AutoKillDoughtKing or not v.Parent or v.Humanoid.Health <= 0
+									_G.AutoKillDoughtKing = false
+								end
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
+    F:AddToggle({
+	Title = "triệu hồi katakuri",
+	Description = "Auto summon Cake Prince",
+	Default = true,
+	Callback = function(Value)
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner", Value)
+	end
+})
+F:AddSection("Xương")
+
+    F:AddToggle({
+		Title = "cày bone",
+		Description = "",
+		Default = false,
+		Callback = function(Value)
+			_G.AutoFarmBone = Value
+		end
+	})
+	spawn(function()
+		while task.wait() do
+			if _G.AutoFarmBone and World3 then
+				pcall(function()
+					local enemies = game:GetService("Workspace").Enemies
+					if enemies:FindFirstChild("Reborn Skeleton") or enemies:FindFirstChild("Living Zombie") or enemies:FindFirstChild("Demonic Soul") or enemies:FindFirstChild("Posessed Mummy") then
+						for _, MobBone in pairs(enemies:GetChildren()) do
+							if MobBone.Name == "Reborn Skeleton" or MobBone.Name == "Living Zombie" or MobBone.Name == "Demonic Soul" or MobBone.Name == "Posessed Mummy" then
+								if MobBone:FindFirstChild("Humanoid") and MobBone:FindFirstChild("HumanoidRootPart") and MobBone.Humanoid.Health > 0 then
+									repeat
+										task.wait()
+										AutoHaki()
+										Equip_Weapon_Farm_All(_G.SelectWeapon)
+										MobBone.HumanoidRootPart.CanCollide = false
+										MobBone.Humanoid.WalkSpeed = 0
+										MobBone.Head.CanCollide = false
+										BringBones = true
+										PosMonBone = MobBone.HumanoidRootPart.CFrame
+										Tween(MobBone.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+									until not _G.AutoFarmBone or not MobBone.Parent or MobBone.Humanoid.Health <= 0
+								end
+							end
+						end
+					else
+						if BypassTP then
+							local playerPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+							local targetPos = BonePos.Position
+							if (playerPos - targetPos).Magnitude > 1500 then
+								BTP(CFrame.new(-9710.945, 204.795, 6041.272))
+							elseif (playerPos - targetPos).Magnitude < 1500 then
+								Tween(CFrame.new(-9710.945, 204.795, 6041.272))
+							end
+						else
+							Tween(CFrame.new(-9710.945, 204.795, 6041.272))
+						end
+						UnEquip_Weapon_Farm_All(_G.SelectWeapon)
+						BringBones = false
+						Tween(CFrame.new(-9710.945, 204.795, 6041.272))
+						for _, NemeBoneMob in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+							if NemeBoneMob.Name == "Reborn Skeleton" then
+								Tween(NemeBoneMob.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+							elseif NemeBoneMob.Name == "Living Zombie" then
+								Tween(NemeBoneMob.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+							elseif NemeBoneMob.Name == "Demonic Soul" then
+								Tween(NemeBoneMob.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+							elseif NemeBoneMob.Name == "Posessed Mummy" then
+								Tween(NemeBoneMob.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
 							end
 						end
 					end
