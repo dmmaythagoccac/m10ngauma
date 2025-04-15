@@ -2772,9 +2772,9 @@ F:AddSection("Xương")
 			end
 		end
 	end)
-F:AddSection("Thông Thạo")
+Q:AddSection("Thông Thạo")
 
-    F:AddDropdown({
+    Q:AddDropdown({
 		Title = "thông thạo mode",
 		Values = {
 			"Level",
@@ -2787,7 +2787,7 @@ DropdownMastery:SetValue("Level")
 DropdownMastery:OnChanged(function(Value)
 	TypeMastery = Value
 end)
-    F:AddToggle({
+    Q:AddToggle({
 		Title = "auto cày thông thạo",
 		Description = "",
 		Default = false,
@@ -2795,7 +2795,7 @@ end)
 			_G.AutoFarmMasDevilFruit = Value
 		end
 })
-    F:AddSlider({
+    Q:AddSlider({
 		Title = "Health (%) Mob",
 		Description = "",
 		Default = 25,
@@ -2946,7 +2946,7 @@ end)
 		end
 	end)
 
-F:AddSection("Boss")
+Q:AddSection("Boss")
 
 if First_Sea then
 	tableBoss = {
@@ -2993,7 +2993,7 @@ elseif Third_Sea then
 end
 
 
-    F:AddDropdown({
+    Q:AddDropdown({
 		Title = "Chọn Boss",
 		Values = tableBoss,
 		Multi = false,
@@ -3004,7 +3004,7 @@ end
 	DropdownBoss:OnChanged(function(Value)
 		_G.SelectBoss = Value
 end)
-    F:AddToggle({
+    Q:AddToggle({
 		Title = "Farm Boss đã chọn",
 		Description = "",
 		Default = false,
