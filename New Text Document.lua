@@ -2496,4 +2496,155 @@ F:AddSection("Farm")
             end
         end
     end)
-   
+    F:AddToggle({
+		Title = "đánh quái vật gần",
+		Description = "",
+		Default = false,
+		Callback = function(Value)
+			_G.AutoNear = Value
+			StopTween(_G.AutoNear)
+		end
+	})
+	spawn(function()
+		while wait() do
+			if _G.AutoNear then
+				pcall(function()
+					for i, v in pairs (game.Workspace.Enemies:GetChildren()) do
+						if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+							if v.Name then
+								if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000 then
+									repeat
+										wait()
+										Equip_Weapon_Farm_All(_G.SelectWeapon)
+										AutoHaki()
+										PosMon = v.HumanoidRootPart.CFrame
+										Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 3))
+										v.HumanoidRootPart.CanCollide = false
+										v.Humanoid.WalkSpeed = 0
+										v.Head.CanCollide = false
+										v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+										BringFarmLevel = true
+									until not _G.AutoNear or not v.Parent or v.Humanoid.Health <= 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
+									BringFarmLevel = false
+								end
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
+F:AddSection("Katakuri")
+
+    F:AddToggle({
+		Title = "đánh katakuri",
+		Description = "",
+		Default = false,
+		Callback = function(Value)
+			_G.AutoFarmDought = Value
+			StopTween(_G.AutoFarmDought)
+		end
+	})
+	spawn(function()
+		while task.wait() do
+			pcall(function()
+				if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
+					KillMob = (tonumber(string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41)) - 500)
+				elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
+					KillMob = (tonumber(string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 40, 41)) - 500)
+				elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
+					KillMob = (tonumber(string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 41, 41)) - 500)
+				end
+			end)
+		end
+	end)
+	spawn(function()
+		while task.wait() do
+			if _G.AutoFarmDought then
+				pcall(function()
+					if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
+						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if v.Name == "Cake Prince" then
+								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+									repeat
+										task.wait()
+										Equip_Weapon_Farm_All(_G.SelectWeapon)
+										v.HumanoidRootPart.CanCollide = false
+										v.Humanoid.WalkSpeed = 0
+										v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+										Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+										sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+									until not _G.AutoFarmDought or not v.Parent or v.Humanoid.Health <= 0
+								end
+							end
+						end
+					else
+						if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") then
+							Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+						else
+							if KillMob == 0 then
+							end
+							if game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 1 then
+								if game:GetService("Workspace").Enemies:FindFirstChild("Cookie Crafter") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Guard") or game:GetService("Workspace").Enemies:FindFirstChild("Baking Staff") or game:GetService("Workspace").Enemies:FindFirstChild("Head Baker") then
+									for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+										if v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker" then
+											if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+												repeat
+													task.wait()
+													AutoHaki()
+													Equip_Weapon_Farm_All(_G.SelectWeapon)
+													v.HumanoidRootPart.CanCollide = false
+													v.Humanoid.WalkSpeed = 0
+													v.Head.CanCollide = false
+													v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+													BringDought = true
+													PosMonDoughtOpenDoor = v.HumanoidRootPart.CFrame
+													Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 4))
+												until not _G.AutoFarmDought or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0 or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or KillMob == 0
+											end
+										end
+									end
+								else
+									if BypassTP then
+										if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CakePos.Position).Magnitude > 1500 then
+											BTP(CFrame.new(-2106.864013671875, 139.4144287109375, -12053.1982421875))
+										elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CakePos.Position).Magnitude < 1500 then
+											Tween(CFrame.new(-2106.864013671875, 139.4144287109375, -12053.1982421875))
+										end
+									else
+										Tween(CFrame.new(-2106.864013671875, 139.4144287109375, -12053.1982421875))
+									end
+									BringDought = false
+									UnEquip_Weapon_Farm_All(_G.SelectWeapon)
+									Tween(CFrame.new(-2106.864013671875, 139.4144287109375, -12053.1982421875))
+									if game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter") then
+										Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+									else
+										if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Guard") then
+											Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Guard").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+										else
+											if game:GetService("ReplicatedStorage"):FindFirstChild("Baking Staff") then
+												Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Baking Staff").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+											else
+												if game:GetService("ReplicatedStorage"):FindFirstChild("Head Baker") then
+													Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Head Baker").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+												end
+											end
+										end
+									end
+								end
+							else
+								if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
+									Tween(game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								else
+									if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") then
+										Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+									end
+								end
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
