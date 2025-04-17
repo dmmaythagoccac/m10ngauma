@@ -1,16 +1,16 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vinh12eqweaws/vvvs/refs/heads/main/caz"))()
 local Window = redzlib:MakeWindow({
-  Title = "Team hack 5B : Blox Fruits",
-  SubTitle = "by VietHoang",
+  Title = "Chú Roblox Tổng Hợp",
+  SubTitle = "by Team script của Chú Roblox",
 })
 
 local AFKOptions = {}
 
 local Discord = Window:MakeTab({"Discord", "video"})
 Discord:AddDiscordInvite({
-  Name = "5B script rr",
-  Description = "https://discord.gg/WBrpB8ZN",
-  Logo = "rbxassetid://130381759913713",
+  Name = "Chú Roblox Hub",
+  Description = "",
+  Logo = "rbxassetid://122932199514926,
   Invite = "https://discord.gg/WBrpB8ZN"
   })
 
@@ -21,7 +21,7 @@ local Tab = Window:MakeTab({"Hopserver",
 
 local Dropdown = Tab:AddDropdown({
   Name = "Chọn công cụ",
-  Description = "Để cho vui thôi có cái gì đâu",
+  Description = "để cho nó oai ý mà",
   Options = {"melee", "blox fruit", "sword", "gun"},
   Default = "melee",
   Flag = "dropdown teste",
@@ -112,7 +112,7 @@ local Settings = {
   Translator = true; -- true/false
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))(Settings)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/newredz/BloxFruits/refs/heads/main/Source.luau"))(Settings)
 end
 })
 
