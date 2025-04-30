@@ -1,0 +1,17 @@
+local host = "https://yeumoney.com/rhPqT-";
+local hwid = (game:GetService("RbxAnalyticsService")):GetClientId();
+local Keysystem = {};
+function Keysystem:GetUserKey()
+	local Data = (loadstring(game:HttpGet(host .. "/data.lua")))();
+	for i, entry in ipairs(Data) do
+		local DataKey = entry.key;
+		local DataHwid = entry.hwid;
+		if DataHwid == hwid then
+			return DataKey;
+		end;
+	end;
+end;
+function Keysystem:GetKeyUrl()
+	return host .. "/redirect.php?hwid=" .. hwid;
+end;
+return Keysystem;
